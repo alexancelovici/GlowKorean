@@ -1,0 +1,53 @@
+[
+  {
+    "idProd": "P001",
+    "priceID": "price_1O9XYZabc123456",
+    "currency": "CLP",
+    "slug": "dynasty-cream",
+    "name": "Beauty of Joseon - Dynasty Cream",
+    "price": 23900,
+    "description": "Hidratante cremosa con arroz, ginseng, escualano y niacinamida. Aporta hidratación, nutrición y luminosidad a la piel.",
+    "img": "/uploads/86f9158f-9cfe-4773-9d43-b3f5ec0d7a43.png"
+  },
+  {
+    "idProd": "P002",
+    "priceID": "price_1O9XYZdef789654",
+    "currency": "CLP",
+    "slug": "snail-92-cream",
+    "name": "Cosrx - Advanced Snail 92 All in One Cream",
+    "price": 22900,
+    "description": "Crema todo-en-uno con 92% mucina de caracol y ácido hialurónico. Calma, repara e hidrata intensamente.",
+    "img": "/uploads/a4e7fd2b-55a3-4782-893e-f0fdcf43868f.png"
+  },
+  {
+    "idProd": "P003",
+    "priceID": "price_1O9XYZghi456321",
+    "currency": "CLP",
+    "slug": "good-cera-cream",
+    "name": "Holika Holika - Good Cera Super Ceramide Cream",
+    "price": 23900,
+    "description": "Crema rica en ceramidas que fortalece la barrera de la piel y previene la pérdida de hidratación. Contiene manteca de karité, aceites vegetales, aloe vera y manzanilla para suavizar, nutrir y calmar hasta por 72 horas.",
+    "img": "/uploads/ed72914f-fb15-4bbc-97b6-4b62e81a313c.png"
+  },
+  {
+    "idProd": "P004",
+    "priceID": "price_1O9XYZjkl147258",
+    "currency": "CLP",
+    "slug": "hyaluronic-moist-cream",
+    "name": "Isntree - Hyaluronic Acid Moist Cream",
+    "price": 21900,
+    "description": "Crema hidratante con 10 tipos de ácido hialurónico, manteca de karité, avena, alcachofa y té verde. Ideal para piel deshidratada.",
+    "img": "/uploads/6a595178-f310-49b9-8b63-2f60b173ff64.png"
+  },
+  {
+    "idProd": "P005",
+    "priceID": "price_1O9XYZmno789123",
+    "currency": "CLP",
+    "slug": "collagen-scalp-pack",
+    "name": "Treecell - Collagen Boost Scalp Pack",
+    "price": 26900,
+    "description": "Mascarilla capilar con colágeno y vitamina C. Hidrata el cuero cabelludo seco, mejora elasticidad y brillo.",
+    "img": "/uploads/08673bf5-9313-4914-bed0-0bf2cb45cb9d.png"
+  }
+]
+
