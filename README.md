@@ -168,6 +168,7 @@ backend/
 - Filtro y búsqueda avanzada
 - Wishlist / Favoritos
 - Sistema de notificaciones
+- 🧠 Recomendaciones personalizadas usando Machine Learning: analizar búsquedas y compras para sugerir productos relevantes
 
 ---
 
