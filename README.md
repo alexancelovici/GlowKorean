@@ -168,3 +168,12 @@ backend/
 
 Este proyecto está bajo licencia MIT.  
 Desarrollado como parte del aprendizaje en desarrollo web fullstack.
+
+---
+
+### 🌍 Deploy
+
+Este proyecto está desplegado en Netlify:  
+🔗 [https://glowkorean.netlify.app/](https://glowkorean.netlify.app/)
+
+
