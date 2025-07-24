@@ -25,6 +25,6 @@ app.use("/api/products", productRouter);
 app.use("/api/carts", cartRouter);
 
 app.listen(process.env.PORT || 3000, () =>
-  console.log("✅ Servidor backend corriendo en puerto 3000")
+  console.log(`servidor levantado en ${process.env.PORT}`)
 );
 

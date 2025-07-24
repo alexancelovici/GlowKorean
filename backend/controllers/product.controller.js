@@ -1,6 +1,7 @@
 const Product = require("../models/product.model");
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 
+// Obtener todos los productos
 exports.getAllProducts = async (req, res) => {
   try {
     const productos = await Product.find({});
@@ -10,6 +11,27 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
+// Obtener un producto por slug
+exports.getProductBySlug = async (req, res) => {
+  const { slug } = req.params;
+
+  try {
+    const product = await Product.findOne({ slug });
+
+    if (!product) {
+      return res.status(404).json({ message: "Producto no encontrado" });
+    }
+
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({
+      msg: "Error al obtener el producto",
+      error: error.message
+    });
+  }
+};
+
+// Crear producto y sincronizar con Stripe
 exports.createProduct = async (req, res) => {
   const { name, price, description, img, currency, slug } = req.body;
 
@@ -42,11 +64,12 @@ exports.createProduct = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       msg: "Error al crear el producto",
-      error
+      error: error.message
     });
   }
 };
 
+// Actualizar producto por ID
 exports.updateProductById = async (req, res) => {
   const { name, price, description, img } = req.body;
 
@@ -61,18 +84,24 @@ exports.updateProductById = async (req, res) => {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
 
-    return res.status(200).json({ updatedProduct });
+    res.status(200).json({ updatedProduct });
   } catch (error) {
-    return res.status(500).json({
+    res.status(500).json({
       msg: "Error actualizando el producto",
       error: error.message
     });
   }
 };
 
+// Eliminar producto por ID
 exports.deleteProductById = async (req, res) => {
   try {
     const productoBorrado = await Product.findByIdAndDelete(req.params.id);
+
+    if (!productoBorrado) {
+      return res.status(404).json({ message: "Producto no encontrado" });
+    }
+
     res.json(productoBorrado);
   } catch (error) {
     res.status(500).json({ msg: "Error al eliminar el producto" });

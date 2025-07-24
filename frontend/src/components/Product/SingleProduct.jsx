@@ -1,29 +1,35 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
+
 import { formatCLP } from "../../utils/formatCLP.js";
 import UserContext from "../../contexts/user/UserContext.js";
 import ProductContext from "../../contexts/product/ProductContext.jsx";
-import { useContext, useEffect, useState } from "react";
 
 const SingleProduct = () => {
+  const { slug } = useParams();
+  const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { product } = location?.state;
+  const [error, setError] = useState(null);
 
-  const userCtx = useContext(UserContext);
-  const { authStatus, cart, editCart, getCart } = userCtx;
-
+  const { authStatus, cart, editCart, getCart } = useContext(UserContext);
   const { setCurrentProduct } = useContext(ProductContext);
 
   useEffect(() => {
-    if (!product) {
-      navigate("/productos");
-      return;
-    }
+    const fetchProduct = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3000/api/products/${slug}`);
+        setProduct(res.data);
+        setCurrentProduct(res.data);
+      } catch (err) {
+        console.error("Error al cargar el producto:", err.message);
+        setError("Producto no encontrado");
+      }
+    };
 
-    setCurrentProduct(product);
+    fetchProduct();
     getCart();
-  }, []);
+  }, [slug]);
 
   const handleChange = (e) => {
     setQuantity(Number(e.target.value));
@@ -31,7 +37,7 @@ const SingleProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (quantity === 0) return;
+    if (!product || quantity === 0) return;
 
     const item = {
       priceID: product.priceID,
@@ -56,7 +62,8 @@ const SingleProduct = () => {
     await editCart(updatedCart);
   };
 
-  if (!product) return null;
+  if (error) return <p className="text-center py-20 text-red-500">{error}</p>;
+  if (!product) return <p className="text-center py-20">Cargando producto...</p>;
 
   const { name, description, img, price } = product;
   const quantityOptions = [0, 1, 2, 3, 4, 5];
@@ -84,7 +91,11 @@ const SingleProduct = () => {
                 ))}
               </select>
 
-              <button type="submit" className="btn-product mt-6" disabled={quantity === 0}>
+              <button
+                type="submit"
+                className="btn-product mt-6"
+                disabled={quantity === 0}
+              >
                 {cart.length ? "Modificar carrito" : "Agregar al carrito"}
               </button>
             </form>
@@ -96,7 +107,11 @@ const SingleProduct = () => {
         </section>
 
         <figure>
-          <img src={img} alt={description} className="w-full h-auto object-cover rounded-lg shadow-md" />
+          <img
+            src={img}
+            alt={description}
+            className="w-full h-auto object-cover rounded-lg shadow-md"
+          />
         </figure>
       </div>
     </main>
@@ -104,4 +119,5 @@ const SingleProduct = () => {
 };
 
 export default SingleProduct;
+
 

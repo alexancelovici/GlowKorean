@@ -30,7 +30,7 @@ exports.editCart = async (req, res) => {
 
 exports.createCheckoutSession = async (req, res) => {
   const userId = req.user.id;
-  const userEmail = req.user.email; // Desde el token JWT
+  const userEmail = req.user.email;
   const cart = await Cart.findOne({ userId });
 
   if (!cart || cart.products.length === 0) {
@@ -50,5 +50,6 @@ exports.createCheckoutSession = async (req, res) => {
     customer_email: userEmail,
   });
 
-  res.json({ url: session.url });
+  // 🔧 esta es la línea que arregla el problema:
+  res.json({ session_url: session.url });
 };

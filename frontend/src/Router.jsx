@@ -16,7 +16,7 @@ import CancelPage from "./components/Cancel";
 
 import Auth from "./routes/Auth";
 import PrivateRoute from "./routes/Private";
-import ProductDetail from "./routes/ProductDetail";
+
 
 const Router = () => {
   return (
@@ -28,11 +28,9 @@ const Router = () => {
           <Route path="iniciar-sesion" element={<Auth component={Login} />} />
           <Route path="perfil" element={<PrivateRoute component={Profile} />} />
           <Route path="carrito" element={<PrivateRoute component={Checkout} />} />
-
           <Route path="productos" element={<ProductList />} />
-          <Route path="productos/:slug" element={<ProductDetail />} />
+          <Route path="productos/:slug" element={<SingleProduct />} />
           <Route path="admin/crear-producto" element={<CreateProduct />} />
-
           <Route path="pago-exitoso" element={<SuccessPage />} />
           <Route path="pago-cancelado" element={<CancelPage />} />
         </Route>
@@ -42,5 +40,6 @@ const Router = () => {
 };
 
 export default Router;
+
 
 
