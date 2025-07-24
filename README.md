@@ -60,15 +60,22 @@ cd glowkorean
 #### 📦 backend/.env
 
 ```env
-MONGO_URI=mongodb://localhost:27017/glowkorean
-SECRET=una_clave_segura
+PORT=3000
+MONGODB_URI=mongodb+srv://glowkorean_user:glowkorean2025@cluster0.clgbwd8.mongodb.net/glowkorean?retryWrites=true&w=majority&appName=Cluster0
+SECRET=DWFS
 NODE_ENV=development
+
+FRONTEND_URL_PROD=https://mi-app-frontend.up.railway.app
+FRONTEND_URL_DEV=http://localhost:5173
+
+STRIPE_SUCCESS_URL=http://localhost:5173/pago-exitoso
+STRIPE_CANCEL_URL=http://localhost:5173/pago-cancelado
 ```
 
 #### 💻 frontend/.env
 
 ```env
-VITE_API_URL=http://localhost:5173/api
+VITE_BACKEND_URL=http://localhost:3000/api
 ```
 
 ### 3. Instala las dependencias
@@ -169,11 +176,10 @@ backend/
 Este proyecto está bajo licencia MIT.  
 Desarrollado como parte del aprendizaje en desarrollo web fullstack.
 
+
 ---
 
 ### 🌍 Deploy
 
 Este proyecto está desplegado en Netlify:  
 🔗 [https://glowkorean.netlify.app/](https://glowkorean.netlify.app/)
-
-
